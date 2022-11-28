@@ -1,6 +1,5 @@
-# Spacee Technical Test
-## Mars Rover Images by Earth Date
-### By: Logan Schmitt
+# Mars Rover Images by Earth Date
+## By: Logan Schmitt
 
 <br/>
 

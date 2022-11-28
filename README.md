@@ -1,5 +1,5 @@
 # Mars Rover Images by Earth Date
-## By: Logan Schmitt
+By: Logan Schmitt
 
 <br/>
 

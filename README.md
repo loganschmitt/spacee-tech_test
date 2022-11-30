@@ -7,7 +7,7 @@ By: Logan Schmitt
 
 After cloning the repository and loading it into your preferred IDE, you should navigate into the "backend" directory with the command: `cd backend`
 
-To run this program, you will need Node.js. This can be installed from their website [here](https://nodejs.org/en/download/).
+To run this program, you will need `Node.js`. This can be installed from their website [here](https://nodejs.org/en/download/).
 
 Having done this, there are a series of packagae installs you will need to run the `app.js` file.
 1. Firstly, you will need to install **Express** using the command `npm install express`.

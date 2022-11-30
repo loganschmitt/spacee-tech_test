@@ -8,12 +8,13 @@ const myCache = new NodeCache();
 const NASA_API_KEY = "Kwy1dS4QRfDmr59crEGkfOUerh9cDHLKnj9UO0Uh"
 const app = express();
 const PORT = 3000;
+const debug = true;
 
 //------------------------------------------------------------------------------------
 app.get(`/mars-rover/images/:date`, (req, res) => {
   date = req.params.date;
   const valid_date = new Date(date);
-  console.log(valid_date);
+  if (debug) console.log(`date entered: ${valid_date}`);
 
   if (!isNaN(valid_date)) {
     //user has queried a valid date
@@ -23,7 +24,7 @@ app.get(`/mars-rover/images/:date`, (req, res) => {
 
     value = myCache.get(date); //look in cache and see if we have our query results already
     if (value == undefined) {
-      console.log(date + " value not found in cache...fetching from NASA API");
+      if (debug) console.log(date + " value not found in cache...fetching from NASA API");
       fetch(uri).then((response) => response.json()).then((data) => {
         var photos = data.photos; //array of all our photos from API
         var length = photos.length;
@@ -45,7 +46,7 @@ app.get(`/mars-rover/images/:date`, (req, res) => {
         
       }) 
     } else {
-      console.log(date + " found in cache... restoring contents");
+      if (debug) console.log(date + " found in cache... restoring contents");
       res.send(value);
     }
   } else {
@@ -63,7 +64,7 @@ app.listen(PORT, (error) =>{
   }
 );
 
-//Test - NASA's picture of the day
+//Test Route - NASA's picture of the day
 //------------------------------------------------------------------------------------
 app.get('/potd', (req, res) => {
   let api_url = 'https://api.nasa.gov/planetary/apod?api_key=' + NASA_API_KEY;
@@ -75,5 +76,3 @@ app.get('/potd', (req, res) => {
   })
   .catch((err) => console.log(err));
 });
-
-//------------------------------------------------------------------------------------
